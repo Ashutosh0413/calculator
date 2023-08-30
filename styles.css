@@ -27,7 +27,7 @@ body{
 
 }
 
-input{
+.display{
     width: 320px;
     border:none;
     background:transparent;
@@ -37,6 +37,7 @@ input{
     font-size: 40px;
     text-align: right;
     cursor: pointer;
+    color:#ffffff;
 }
 
 input::placeholder{
