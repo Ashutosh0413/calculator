@@ -24,7 +24,7 @@ function operate(operator,a,b){
           return add(a, b);
         case "-":
           return subtract(a, b);
-        case "*":
+        case "x":
           return multiply(a, b);
         case "÷":
           return divide(a, b);
@@ -37,7 +37,6 @@ function operate(operator,a,b){
 document.addEventListener('DOMContentLoaded',function(){
     let buttons = document.querySelectorAll('button')
     let display = document.querySelector('.display')
-    let operators = document.querySelector('.operator')
     let currentNumber = ""
     let firstNumber = null
     let currentOperator =null
@@ -53,16 +52,21 @@ document.addEventListener('DOMContentLoaded',function(){
                 display.textContent = display.textContent.slice(0,-1);
             }else if(buttonValue==='AC'){
                 clearDisplay();
+            }else if(buttonValue==='='){
+                if(firstNumber!==null && currentOperator!==null && currentNumber!==null){
+                    const result = operate(currentOperator,firstNumber,parseFloat(currentNumber));
+                    currentNumber= result.toString();
+                    firstNumber=null;
+                    currentOperator=null;
+                    updateDisplay();
+                }
+            }else if(["+","-","x","÷"].includes(buttonValue)){
+                if(firstNumber===null){
+                    firstNumber = parseFloat(currentNumber);
+                    currentOperator=buttonValue;
+                    currentNumber="";
+                }
             }
-
-
-
-
-
-
-
-
-
         })
     })
     function updateDisplay() {
