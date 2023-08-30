@@ -49,6 +49,10 @@ document.addEventListener('DOMContentLoaded',function(){
             if(!isNaN(buttonValue)||buttonValue==='.'){
                 currentNumber += buttonValue;
                 updateDisplay();
+            }else if(buttonValue==='DEL'){
+                display.textContent = display.textContent.slice(0,-1);
+            }else if(buttonValue==='AC'){
+                clearDisplay();
             }
 
 
@@ -63,6 +67,14 @@ document.addEventListener('DOMContentLoaded',function(){
     })
     function updateDisplay() {
         display.textContent = currentNumber || '0';
+    }
+
+    function clearDisplay() {
+        currentNumber = ""
+        firstNumber = null
+        currentOperator =null
+        updateDisplay();
+        
     }
 
 })
