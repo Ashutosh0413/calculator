@@ -55,6 +55,7 @@ button{
     color:#ffffff;
     cursor: pointer;
     box-shadow: -8px -8px 15px rgba(120, 235, 164, 0.1);
+    
 }
 
 .equalBtn{
@@ -63,4 +64,10 @@ button{
 }
 .operator{
     color: greenyellow;
+}
+
+.span-two{
+    width: 120px;
+    border-radius: 25%;
+    flex-grow: 1;
 }
