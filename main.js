@@ -53,19 +53,22 @@ document.addEventListener('DOMContentLoaded',function(){
             }else if(buttonValue==='AC'){
                 clearDisplay();
             }else if(buttonValue==='='){
-                if(firstNumber!==null && currentOperator!==null && currentNumber!==null){
-                    const result = operate(currentOperator,firstNumber,parseFloat(currentNumber));
+                let result = operate(currentOperator,firstNumber,parseFloat(currentNumber));
+                currentNumber= result.toString();
+                firstNumber=null;
+                currentOperator=null;
+                updateDisplay();
+            }else if(["+","-","x","÷"].includes(buttonValue)){
+                if(currentOperator===null){
+                    firstNumber = parseFloat(currentNumber);
+                }else{
+                    let result = operate(currentOperator,firstNumber,parseFloat(currentNumber));
                     currentNumber= result.toString();
-                    firstNumber=null;
-                    currentOperator=null;
+                    firstNumber=result;
                     updateDisplay();
                 }
-            }else if(["+","-","x","÷"].includes(buttonValue)){
-                if(firstNumber===null){
-                    firstNumber = parseFloat(currentNumber);
-                    currentOperator=buttonValue;
-                    currentNumber="";
-                }
+                currentOperator=buttonValue;
+                currentNumber="";
             }
         })
     })
